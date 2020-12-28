@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 
+import useInterval from 'use-interval'
+
 import ButtonPanel from "./components/ButtonPanel";
 
 import step from "./logic/GameofLife";
@@ -24,27 +26,25 @@ export default function App() {
   const len = 30;
   const [arr, setArr] = useState(arrSetup(len));
   const [isRunning, setIsRunning] = useState(false);
-  //step(arr, setArr);
 
-  const mainLoop = () => {
-    setArr(step(arr, setArr));
+  const mainLoop = (run) => {
+    if (run === true) setArr(step(arr).arr);
+
   };
 
   useEffect(() => {
-    if (isRunning) setInterval(() => mainLoop(), 1000);
-  }, [isRunning]);
-
+    const interval = setInterval(mainLoop(isRunning),1000)
+    return (clearInterval(interval))
+  }, []);
+  useInterval(() =>{
+    mainLoop(isRunning)
+  }, 1000);
+  
   return (
     <div>
-      <h1>Hello StackBlitz!</h1>
+      <h1>Hello StackBlitz! </h1>
       <button
-        onClick={() => {
-          //  const interval = setInterval(() => {
-
-          //}, 1000);
-
-          //  clearInterval(interval);
-
+        onClick={() => {          
           setIsRunning(!isRunning);
         }}
       >

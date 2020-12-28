@@ -9,16 +9,23 @@ const neighbours = arr => {
       if (j < arr[i].length - 1) nTotal += arr[i][j + 1];
       if (i > 0) nTotal += arr[i - 1][j];
       if (i < arr.length - 1) nTotal += arr[i + 1][j];
+
+      if (j > 0 && i > 0) nTotal += arr[i-1][j - 1];
+      if (j > 0 && i < arr.length - 1) nTotal += arr[i+1][j - 1];
+      
+      if (j < arr[i].length - 1 && i > 0) nTotal += arr[i-1][j + 1];
+      if (j < arr[i].length - 1 && i < arr.length - 1) nTotal += arr[i+1][j + 1];
+
       nArr[i].push(nTotal);
     }
   }
   return nArr;
 };
 
-const step = (arr, setArr) => {
+const step = (arr) => {
   let nArr = neighbours(arr);
   let isComplete = true;
-  return arr.map((row, i) => {
+  return {arr:arr.map((row, i) => {
     return row.map((val, j) => {
       if (val === 1) {
         if (nArr[i][j] === 2 || nArr[i][j] === 3) {
@@ -36,7 +43,9 @@ const step = (arr, setArr) => {
         }
       }
     });
-  });
+  }),
+  isComplete
+  }
 };
 
 export default step;

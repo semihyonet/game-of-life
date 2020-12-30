@@ -3,7 +3,7 @@ import Button from "./Button";
 
 const ButtonRow = ({ row, rowIndex, changeVal, isRunning }) => {
   return (
-    <p style={{ margin: 0 }}>
+    <div style={{ margin: 0, display:"flex", flexDirection:"row" }}>
       {row.map((element, columnIndex) => {
         return (
           <Button
@@ -16,7 +16,7 @@ const ButtonRow = ({ row, rowIndex, changeVal, isRunning }) => {
           />
         );
       })}
-    </p>
+    </div>
   );
 };
 

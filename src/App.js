@@ -135,7 +135,7 @@ export default function App() {
 					<br /> Any live cell with more than three live neighbours
 					dies, as if by overpopulation.
 					<br /> Any dead cell with exactly three live neighbours
-					becomes a live cell, as if by reproduction.
+					becomes a live cell, as if by reproduction...
 				</div>
 
 				<p className={styles.blackFont}>Made by Semih Yönet</p>

@@ -1,3 +1,2 @@
-# react-gameoflife
+Welcome to a Game of Life simulation made in React.js
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/react-gameoflife)
